@@ -1,0 +1,24 @@
+This folder contains Matlab replication code for the paper
+"Dynamic Hierarchical Factor Models" by Serena Ng (Columbia
+University, serena.ng@columbia.edu), Emanuel Moench (Federal
+Reserve Bank of New York, emanuel.moench@ny.frb.org), and Simon
+Potter (Federal Reserve Bank of New York,
+simon.potter@ny.frb.org).
+
+The file "dhfm_main.m" generates the main results documented in
+the paper. It first reads in the data set comprising 445
+monthly time series of real activity in the US saved in the
+file "dhfm_data.mat". The individual series' descriptions, 
+sources, and transformations are provided in the data appendix 
+"dhfm_dataapp.pdf" which can also be found at 
+http://www.columbia.edu/~sn2294/papers/dhfm-dataapp.pdf.
+Next, the main file calls the function
+"dhfm_initialize_sampler.m" to generate starting values for all
+model parameters based on principal components estimates.
+Finally, it calls the function "dhfm_run_sampler.m" which
+implements the Gibbs sampler to estimate the hierarchical
+dynamic factor model described in the paper. All other files
+included in this folder are supplementary functions.
+
+The code can be run on Matlab version 13 or lower, both for Windows 
+and UNIX operating systems. 
