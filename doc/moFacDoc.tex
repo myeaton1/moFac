@@ -1,0 +1,85 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Preamble
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,english]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Include relevant packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[margin=1in,paperwidth=8.5in,paperheight=11in,marginpar=0in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{babel}
+\usepackage{hyperref}
+\hypersetup{
+    unicode=false,          % non-Latin characters in Acrobat�s bookmarks
+    bookmarks=false,        % show Acrobat�s Bookmarks?
+    pdfstartview=FitH,
+    pdftitle={Latent Factor Model for Momentum - Bayesian Version},    % title
+    pdfauthor={Matthew Yeaton},          % author
+    pdfsubject={Micro},       % subject of the document
+    pdfnewwindow=true,                % links in new window
+%    pdfkeywords={Urban Economics, Hedonics, Vacancy}, % list of keywords
+%    pdftoolbar=true,       % show Acrobat�s toolbar?
+%    pdfmenubar=true,       % show Acrobat�s menu?
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=black,        % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=black          % color of external links
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	New commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ib}{\begin{itemize}}
+\newcommand{\ie}{\end{itemize}}
+\newcommand{\eb}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+
+\setlength{\parskip}{.5em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Document body
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Latent Factor Model for Momentum\\Bayesian Version}
+% \title{Statement of Purpose - Draft \author{Matthew Yeaton\thanks{Matthew Yeaton, \href{mailto:myeaton1@gmail.com}{myeaton1@gmail.com}.}}}
+\date{}
+% \date{\today}
+\maketitle
+
+\section{Model}
+
+State-space representation:
+
+Observation equation: $$r_t = H'\xi_t + e_t = [0 \quad B \quad B]' \begin{pmatrix} \lambda_t \\ \lambda_{t-1} \\ f_t \end{pmatrix} + e_t$$
+
+$$e_t \sim \mathcal{N}(0,\Sigma_e), \Sigma_e \text{ diagonal}$$
+
+Transition equation: $$\xi_t = \alpha + F\xi_{t-1} + \omega_t \Rightarrow \begin{pmatrix} \lambda_t \\ \lambda_{t-1} \\ f_t \end{pmatrix} = \begin{bmatrix} (I - \Phi)\mu \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} \Phi & 0 & 0 \\ I_K & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \begin{pmatrix} \lambda_{t-1} \\ \lambda_{t-2} \\ f_{t-1} \end{pmatrix} + \begin{pmatrix} v_t \\ 0 \\ f_t \end{pmatrix}$$
+
+$$\omega_t \sim \mathcal{N}(0,\boldsymbol{\Sigma}), \boldsymbol{\Sigma} = \begin{bmatrix} \Sigma_v & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & \Sigma_f \end{bmatrix}, \Sigma_v, \Sigma_f \text{ diagonal}$$
+
+\section{Procedure}
+
+First, initialize $\{\xi_t\}$ using principal components and data available for the entire sample.  Based on these estimates of $\{\xi_t\}$, get initial values of $F, H, \Sigma_e$ and $\boldsymbol{\Sigma}$ (specifically $\Phi, B, \Sigma_e, \Sigma_v, \Sigma_f$). Then each iteration of the Gibbs sampler is as follows:
+
+\eb
+
+    \item Conditional on $F, H, \Sigma_e$ and $\boldsymbol{\Sigma}$, draw $\{\xi_t\}$ using the Carter-Kohn (1994) procedure with the generalization that allows $\boldsymbol{\Sigma}$ to be singular.
+
+    \item Conditional on $\{\xi_t\}$, draw $F, H, \Sigma_e$ and $\boldsymbol{\Sigma}$.
+
+    \item Data augmentation: Conditional on $\{\xi_t\}, H$ and $\Sigma_e$, sample $\{r_t\}$ for those with missing values.
+
+\ee
+
+\end{document}
