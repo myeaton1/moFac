@@ -68,7 +68,7 @@ Transition equation: $$\xi_t = \alpha + F\xi_{t-1} + \omega_t \Rightarrow \begin
 
 $$\omega_t \sim \mathcal{N}(0,\boldsymbol{\Sigma}), \boldsymbol{\Sigma} = \begin{bmatrix} \Sigma_v & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & \Sigma_f \end{bmatrix}, \Sigma_v, \Sigma_f \text{ diagonal}$$
 
-\section{Procedure}
+\section{MCMC}
 
 First, initialize $\{\xi_t\}$ using principal components and data available for the entire sample.  Based on these estimates of $\{\xi_t\}$, get initial values of $F, H, \Sigma_e$ and $\boldsymbol{\Sigma}$ (specifically $\Phi, B, \Sigma_e, \Sigma_v, \Sigma_f$). Then each iteration of the Gibbs sampler is as follows:
 

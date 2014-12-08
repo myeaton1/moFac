@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.7)  5 DEC 2014 16:32
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.7)  5 DEC 2014 19:28
 entering extended mode
 **W:/code/factor/doc/moFacDoc.tex
 (W:/code/factor/doc/moFacDoc.tex
@@ -410,7 +410,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
 (W:\code\factor\doc\moFacDoc.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
 Package rerunfilecheck Info: File `moFacDoc.out' has not changed.
-(rerunfilecheck)             Checksum: EDBEB86EAA131E87A610534C0DBAD2DB;86.
+(rerunfilecheck)             Checksum: 8FE6132460E808F138069AEFF1E0AEAB;81.
  ) 
 Here is how much of TeX's memory you used:
  6291 strings out of 494053
@@ -429,7 +429,7 @@ m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (
 x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on moFacDoc.pdf (1 page, 95935 bytes).
+Output written on moFacDoc.pdf (1 page, 95485 bytes).
 PDF statistics:
  61 PDF objects out of 1000 (max. 8388607)
  7 named destinations out of 1000 (max. 500000)
